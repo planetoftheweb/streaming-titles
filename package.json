@@ -1,13 +1,13 @@
 {
   "name": "streaming-titles",
-  "version": "0.0.1",
-  "description": "Create Streaming Titles for ECAMM Live",
+  "version": "1.0.0",
+  "description": "Create Streaming Titles for ECAMM Live Using HTML, CSS, and JS",
   "scripts": {
     "start": "vite"
   },
   "repository": {
     "type": "git",
-    "url": "git+"
+    "url": "https://github.com/planetoftheweb/streaming-titles.git"
 },
   "author": "Ray Villalobos",
   "license": "MIT",
