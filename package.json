@@ -1,0 +1,17 @@
+{
+  "name": "streaming-titles",
+  "version": "0.0.1",
+  "description": "Create Streaming Titles for ECAMM Live",
+  "scripts": {
+    "start": "vite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+"
+},
+  "author": "Ray Villalobos",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^4.0.3"
+  }
+}

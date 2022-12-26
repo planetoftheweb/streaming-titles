@@ -1,0 +1,19 @@
+{
+  "host": {
+    "name": "Ray Villalobos",
+    "title": "Senior Staff Instructor",
+    "profile": "/in/planetoftheweb",
+    "courses": "/learning/instructors/ray-villalobos"
+  },
+  "guests": [
+    {
+      "name": "Guest 01 Name",
+      "title": "Guest 01 title",
+      "profile": "/in/guest01URL"
+    },{
+      "name": "Guest 02 Name",
+      "title": "Guest 02 title",
+      "profile": "/in/guest02URL"
+    }
+  ]
+}

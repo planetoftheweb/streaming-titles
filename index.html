@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TFIT Title</title>
+  <link rel="stylesheet" href="css/preflight.css">
+  <link rel="stylesheet" href="fonts/icons/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/alpine.js" defer></script>
+</head>
+<body>
+  <div class="people" 
+    :style="{
+      paddingTop: pt+'px',
+      paddingLeft: pl+'px',
+      paddingRight: pr+'px'
+    }"
+    x-data="{
+      stream: [],
+      // Pass URL Variables
+      sh: new URLSearchParams(location.search).get('sh') || true, //show host
+      sg: new URLSearchParams(location.search).get('sg') || true, //show guest
+      wg: new URLSearchParams(location.search).get('wg') || null, //which guest
+      pt: new URLSearchParams(location.search).get('pt') || 0, //padding top
+      pl: new URLSearchParams(location.search).get('pl') || 0, //padding left
+      pr: new URLSearchParams(location.search).get('pr') || 0, // padding right
+      dn: new URLSearchParams(location.search).get('dn') ||  true, // display name
+      dt: new URLSearchParams(location.search).get('dt') ||  true, // display title
+      dp: new URLSearchParams(location.search).get('dp') ||  true // display profile
+    }"
+    x-init="stream = await (await fetch('./stream.json')).json()"
+  >
+    <template x-for="person in stream.guests">
+      <div class="person" x-show="(sg!=='false')"> 
+        <h1 x-show="(dn!=='false')" class="tlt person-name" x-html="person.name"></h1>
+        <p x-show="(dt!=='false')" class="person-title" x-html="person.title"></p>
+        <div x-show="(dp!=='false')" class="social-linkedin">
+          <i class="bi bi-linkedin"></i>
+          <span x-text="person.profile"></span>
+        </div>
+      </div>
+    </template>
+
+    <div class="person" x-show="wg">
+      <h1 x-show="(dn!=='false')" class="tlt person-name" x-html="stream.guests[wg].name"></h1>
+      <p x-show="(dt!=='false')" class="person-title" x-html="stream.guests[wg].title"></p>
+      <div x-show="(dp!=='false')" class="social-linkedin">
+        <i class="bi bi-linkedin"></i>
+        <span x-text="stream.guests[wg].profile"></span>
+      </div>
+    </div>
+    <div class="person" x-show="sh!=='false'">
+      <h1 class="tlt person-name" x-html="stream.host.name"></h1>
+      <p class="person-title" x-html="stream.host.title"></p>
+      <div class="social-linkedin">
+        <i class="bi bi-linkedin"></i>
+        <span x-text="stream.host.profile"></span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
