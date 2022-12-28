@@ -1,11 +1,20 @@
-- name: Checkout  
-  uses: actions/checkout@v2  
-  with:  
-      fetch-depth: 0  
+name: Version
+on: [push]
+permissions:
+  contents: write
+jobs:
+  build-and-deploy:
+    concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout  
+      uses: actions/checkout@v2  
+      with:  
+        fetch-depth: 0  
       
-- name: Version  
-  id: version  
-  uses: juliansangillo/tag-version@v1  
-  with:  
-      production-branch: master  
-      dev-branch: develop  
+    - name: Version  
+      id: version  
+      uses: juliansangillo/tag-version@v1  
+      with:  
+        production-branch: master  
+        dev-branch: develop
